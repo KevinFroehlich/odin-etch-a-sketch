@@ -36,7 +36,20 @@ function createGrid() {
         div.style.width = `${100/size}%`
         div.style.height = `${100/size}%`
         div.addEventListener("mouseover", () => {
-            div.style.backgroundColor = "blue"
+            let opacity = parseFloat(div.style.opacity) || 0
+            opacity += 0.1
+
+            if (opacity > 1) {
+                opacity = 1
+            }
+
+            div.style.opacity = opacity
+            
+            const r = Math.floor(Math.random() * 256)
+            const g = Math.floor(Math.random() * 256)
+            const b = Math.floor(Math.random() * 256)
+
+            div.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
         })
         container.append(div, errorMessage)
     }
